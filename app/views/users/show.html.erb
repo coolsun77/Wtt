@@ -10,33 +10,101 @@
 
 
 <h2>EODs</h2>
-<% @user.eods.each do |eod| %>
-  <p>
-    <strong>Pre_QA:</strong>
-    <%= eod.Pre_QA %>
-  </p>
- 
-  <p>
-    <strong>Review:</strong>
-    <%= eod.Review %>
-  </p>
-<% end %>
+<%= render @user.eods %>
+
 
 
 <h2>Add a EOD:</h2>
-<%= form_for([@user, @user.eods.build]) do |f| %>
-  <p>
-    <%= f.label :Pre_QA %><br>
-    <%= f.text_field :Pre_QA %>
-  </p>
-  <p>
-    <%= f.label :Review %><br>
-    <%= f.text_field :Review %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render 'eods/form' %>
  
+
+<div class="span12">
+<form>
+<fieldset>
+<table class="table table-hover table-striped">
+	<thead>
+		<tr>
+			<th colspan="3" rowspan="1">Loc</th>
+			<th colspan="2">Amount</th>
+			<th>Hours</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="11"><span>Game Project</span></td>
+			<td rowspan="6"><span>In-game</span></td>
+			<td><span>Pre-testing</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr class="success">
+			<td><span>Review</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr class="error">
+			<td><span>Testing</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr class="warning">
+			<td rowspan="2"><span>Bug Management</span></td>
+			<td>Report</td>
+			<td>Rtest</td>
+			<td rowspan="2"><input type="text" /></td>
+			<td rowspan="2"><input type="text" /></td>
+		</tr>
+		<tr class="warning">
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr class="info">
+			<td><span>Audio Testing</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr>
+			<td rowspan="3"><span>Non-game</span></td>
+			<td><span>Review</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr>
+			<td><span>Testing</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr>
+			<td><span>Bug Management</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span>Project Management</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span>Other</span></td>
+			<td colspan="2"><input type="text" /></td>
+			<td><input type="text" /></td>
+			<td><input type="text" /></td>
+		</tr>
+	</tbody>
+</table>
+<button class="btn" type="submit">提交</button></fieldset>
+</form>
+</div>
+
+
 
 <%= link_to 'Back', users_path %>

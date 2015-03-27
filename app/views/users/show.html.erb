@@ -1,0 +1,42 @@
+<p>
+  <strong>User:</strong>
+  <%= @user.uname %>
+</p>
+ 
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+
+<h2>EODs</h2>
+<% @user.eods.each do |eod| %>
+  <p>
+    <strong>Pre_QA:</strong>
+    <%= eod.Pre_QA %>
+  </p>
+ 
+  <p>
+    <strong>Review:</strong>
+    <%= eod.Review %>
+  </p>
+<% end %>
+
+
+<h2>Add a EOD:</h2>
+<%= form_for([@user, @user.eods.build]) do |f| %>
+  <p>
+    <%= f.label :Pre_QA %><br>
+    <%= f.text_field :Pre_QA %>
+  </p>
+  <p>
+    <%= f.label :Review %><br>
+    <%= f.text_field :Review %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+
+<%= link_to 'Back', users_path %>

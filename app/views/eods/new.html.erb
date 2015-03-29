@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
    <head>
   
@@ -15,35 +15,15 @@
    <body>
       <script src="https://code.jquery.com/jquery.js"></script>
       
-<div class="container">
-  <div class="row">
+	  
+	 <h1>New eod</h1>
+  
+	<%= render 'form' %>
 
-<p>
-  <strong>User:</strong>
-  <%= @user.uname %>
-</p>
- 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-
-<h2>EODs</h2>
-<%= render @user.eods %>
+	<%= link_to 'Back', users_path %>
 
 
 
+   </body>
+</html>
 
-<%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
-<input type="Date" name="eod[Date]" id="eod_Date" />
-<%= f.submit %>
-<% end %>
-
-
-
-<%= month_calendar do |date| %>
-  <%= date %>
-<% end %>
-
-<%= link_to 'Back', users_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327073243) do
+ActiveRecord::Schema.define(version: 20150328135755) do
 
   create_table "eods", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150327073243) do
     t.string   "N_Bug_Management_retest_N", default: "Noting"
     t.string   "Project_Management_N",      default: "Noting"
     t.string   "Other_N",                   default: "Noting"
+    t.date     "Date"
   end
 
   add_index "eods", ["user_id"], name: "index_eods_on_user_id"

@@ -37,7 +37,7 @@
 
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 <input type="Date" name="eod[Date]" id="eod_Date" />
-<%= f.submit %>
+<input type="submit" name="commit" value="Create Eod" />
 <% end %>
 
 

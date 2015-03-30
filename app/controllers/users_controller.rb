@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
 def index
 
     @users = User.all
@@ -9,7 +10,8 @@ def new
 end
 
 def show
-  @user = User.find(params[:id])
+#  render plain: params[:user].inspect
+  @user = User.find(params[:uname])
 
 end
 
@@ -40,6 +42,14 @@ def update
     render 'edit'
   end
 end
+
+
+
+def login
+# render plain: params[:user].inspect
+  @user = User.find(params[:uname])
+end
+
 
 private
 	  def user_params

@@ -2,10 +2,15 @@ class EodsController < ApplicationController
 
   def new
   #  render plain: params.inspect
-   @edate = params[:eod][:Date]
+      @edate = params[:eod][:Date]
+
+      if Eod.find_by(Date: @edate) 
+         @eod= Eod.find_by(Date: @edate) 
+         render 'edit'
+      else
       @user = User.find(params[:id])
       @eod = Eod.new(:user=>@user, :Date =>@edate )
-    
+    end
   end
 
 

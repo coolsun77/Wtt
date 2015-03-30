@@ -18,27 +18,25 @@
 <div class="container">
   <div class="row">
 
+
+
 <p>
   <strong>User:</strong>
   <%= @user.uname %>
 </p>
- 
 <p>
   <strong>Role:</strong>
   <%= @user.role %>
 </p>
 
 
-<h2>EODs</h2>
-<%= render @user.eods %>
-
-
 
 
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 <input type="Date" name="eod[Date]" id="eod_Date" />
-<input type="submit" name="commit" value="Create Eod" />
+<input type="submit" name="commit" value="Try Eod" />
 <% end %>
+
 
 
 

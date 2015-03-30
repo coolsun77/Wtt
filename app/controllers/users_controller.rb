@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   
 def index
-
+    if session[:user_name] 
+      @user = User.find_by(uname: session[:user_name] ) 
+      redirect_to @user
+    else 
     @users = User.all
   end
+end
   
 def new
 	@user = User.new
@@ -11,7 +15,7 @@ end
 
 def show
 #  render plain: params[:user].inspect
-  @user = User.find(params[:uname])
+  @user = User.find(params[:id])
 
 end
 
@@ -47,7 +51,14 @@ end
 
 def login
 # render plain: params[:user].inspect
-  @user = User.find(params[:uname])
+  @user = User.find_by(uname: params[:user][:uname]) 
+  if @user
+    session[:user_name] = params[:user][:uname]
+    redirect_to @user
+  else
+    redirect_to "/users"
+  end
+#  render plain: @user.inspect
 end
 
 

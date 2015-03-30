@@ -19,11 +19,7 @@
   <div class="container">
   <div class="row">
 
-<%= link_to 'New user', new_user_path %>
-      
 
-
-<%= puts ENV['USERNAME'] %>
 
 <table>
   <tr>
@@ -32,14 +28,12 @@
     <th colspan="2"></th>
   </tr>
      
-    
-  <% @users.each do |user| %>
+ 
     <tr>
-      <td><%= user.uname %></td>
-      <td><%= user.role %></td>
-      <td><%= link_to 'Show', user_path(user) %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= @user.uname %></td>
+      <td><%= @user.role %></td>
+      <td><%= link_to 'Show', user_path(@user) %></td>
+      <td><%= link_to 'Edit', edit_user_path(@user) %></td>
     </tr>
-  <% end %>
 </table>
 

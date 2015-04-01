@@ -5,11 +5,21 @@ class EodsController < ApplicationController
       @edate = params[:eod][:Date]
 
       if Eod.find_by(Date: @edate) 
+        if Gobject.find_by(Date: @edate)               
          @eod= Eod.find_by(Date: @edate) 
-         render 'edit'
+         @gobject = Gobject.find_by(Date: @edate)
+         redirect_to edit_user_eod_gobject_path(@eod.user, @eod, @gobject)         
+        else
+          @user = User.find(params[:id])
+          @eod= Eod.find_by(Date: @edate) 
+          redirect_to new_user_eod_gobject_path(@user, @eod)
+        end
       else
       @user = User.find(params[:id])
       @eod = Eod.new(:user=>@user, :Date =>@edate )
+      @eod = @user.eods.create("Date"=>@edate)
+      redirect_to new_user_eod_gobject_path(@user, @eod)
+
     end
   end
 

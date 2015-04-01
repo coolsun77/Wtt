@@ -4,7 +4,9 @@ post 'users/login/' => 'users#login' , as: :login
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 resources :users do
-  resources :eods
+  resources :eods do
+    resources :gobjects
+  end
 end
 
   # You can have the root of your site routed with "root"

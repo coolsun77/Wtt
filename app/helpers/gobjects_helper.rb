@@ -1,0 +1,2 @@
+module GobjectsHelper
+end

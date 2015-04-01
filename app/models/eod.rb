@@ -13,7 +13,7 @@ class Eod < ActiveRecord::Base
     self.HeroPre_QA_H + self.HeroReview_H +  self.HeroQA_H +  self.HeroBug_Management_H + self.HeroAudio_QA_H + self.HeroN_Review_H +  self.HeroN_QA_H +  self.HeroN_Bug_Management_H +  self.HeroProject_Management_H +  self.HeroOther_H +  
      self.D3Pre_QA_H + self.D3Review_H +  self.D3QA_H +  self.D3Bug_Management_H + self.D3Audio_QA_H + self.D3N_Review_H +  self.D3N_QA_H +  self.D3N_Bug_Management_H +  self.D3Project_Management_H +  self.D3Other_H +  
       self.OWPre_QA_H + self.OWReview_H +  self.OWQA_H +  self.OWBug_Management_H + self.OWAudio_QA_H + self.OWN_Review_H +  self.OWN_QA_H +  self.OWN_Bug_Management_H +  self.OWProject_Management_H +  self.OWOther_H 
-  errors.add(:base, "时间之和必须大于等于8小于等于24") unless (  sumot >=8  && sumot <=24  )
+  errors.add(:base, "每日时间之和必须大于等于8小于等于24") unless (  sumot >=8  && sumot <=24  )
 
 end
 

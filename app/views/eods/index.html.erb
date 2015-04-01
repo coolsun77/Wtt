@@ -1,0 +1,15 @@
+<% if @eod.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@eod.errors.count, "error") %> prohibited
+        this eod from being saved:
+      </h2>
+      <ul>
+        <% @eod.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  no error

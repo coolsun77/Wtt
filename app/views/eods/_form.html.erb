@@ -3,175 +3,553 @@
 <fieldset>
 
 <%= form_for([@user, @user.eods.build]) do |f| %>	
+
+<% if @eod.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@eod.errors.count, "error") %> prohibited
+        this eod from being saved:
+      </h2>
+      <ul>
+        <% @eod.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
 <table class="table table-hover table-striped">
 
-	<thead>
-		<tr>
-			<th colspan="3" rowspan="1">Loc</th>
-			<th colspan="2">Amount</th>
-			<th>Hours</th>
-			<th>Notes</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="12"><span>WoW</span></td>
-			<td rowspan="6"><span>In-game</span></td>
-			<td><span>Pre-testing</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[Pre_QA]" id="wow_Pre_QA" /></td>
-			<td><input type="text" value="0" name="wow[Pre_QA_H]" id="wow_Pre_QA_H" /></td>
-			<td><input type="text" value="0" name="wow[Pre_QA_N]" id="wow_Pre_QA_N" /></td>
-		</tr>
-		<tr class="success">
-			<td><span>Review</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[Review]" id="wow_Review" /></td>
-			<td><input type="text" value="0" name="wow[Review_H]" id="wow_Review_H" /></td>
-			<td><input type="text" value="0" name="wow[Review_N]" id="wow_Review_N" /></td>
-		</tr>
-		<tr class="error">
-			<td><span>Testing</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[QA]" id="wow_QA" /></td>
-			<td><input type="text" value="0" name="wow[QA_H]" id="wow_QA_H" /></td>
-			<td><input type="text" value="0" name="wow[QA_N]" id="wow_QA_N" /></td>
-		</tr>
-		<tr class="warning">
-			<td rowspan="2"><span>Bug Management</span></td>
-			<td>Report</td>
-			<td>Rtest</td>
-			<td rowspan="2"><input type="text" value="0" name="wow[Bug_Management_H" id="wow_Bug_Management_H" /></td>
-			<td rowspan="2"><input type="text" value="0" name="wow[Bug_Management_N]" id="wow_Management_N" /></td>
-		</tr>
-		<tr class="warning">
-			<td><input type="text" value="0" name="wow[Bug_Management_report]" id="wow_Bug_Management_report" /></td>
-			<td><input type="text" value="0" name="wow[Bug_Management_retest]" id="wow_Bug_Management_retest" /></td>
-		</tr>
-		<tr class="info">
-			<td><span>Audio Testing</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[Audio_QA]" id="wow_Audio_QA" /></td>
-			<td><input type="text" value="0" name="wow[Audio_QA_H]" id="wow_Audio_QA_H" /></td>
-			<td><input type="text" value="0" name="wow[Audio_QA_N]" id="wow_Audio_QA_N" /></td>
-		</tr>
-		<tr>
-			<td rowspan="4"><span>Non-game</span></td>
-			<td><span>Review</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[N_Review]" id="wow_N_Review" /></td>
-			<td><input type="text" value="0" name="wow[N_Review_H]" id="wow_N_Review_H" /></td>
-			<td><input type="text" value="0" name="wow[N_Review_N]" id="wow_N_Review_N" /></td>
-		</tr>
-		<tr>
-			<td><span>Testing</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[N_QA]" id="wow_N_QA" /></td>
-			<td><input type="text" value="0" name="wow[N_QA_H]" id="wow_N_QA_H" /></td>
-			<td><input type="text" value="0" name="wow[N_QA_N]" id="wow_N_QA_N" /></td>
-		</tr>
-		<tr>
-			<td rowspan="2"><span>Bug Management</span></td>
-			<td>Report</td>
-			<td>Rtest</td>
-			<td rowspan="2"><input type="text" value="0" name="wow[N_Bug_Management_H]" id="wow_N_Bug_Management_H" /></td>
-			<td rowspan="2"><input type="text" value="0" name="wow[N_Bug_Management_N]" id="wow_N_Bug_Management_N" /></td>
-		</tr>
-		<tr class="warning">
-			<td><input type="text" value="0" name="wow[N_Bug_Management_report]" id="wow_N_Bug_Management_report" /></td>
-			<td><input type="text" value="0" name="wow[N_Bug_Management_retest]" id="wow_N_Bug_Management_retest" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><span>Project Management</span></td>
-			
-			<td colspan="2"><input type="text" value="0" name="wow[Project_Management]" id="wow_Project_Management" /></td>
-			<td><input type="text" value="0" name="wow[Project_Management_H]" id="wow_Project_Management_H" /></td>
-			<td><input type="text" value="0" name="wow[Project_Management_N]" id="wow_Project_Management_N" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><span>Other</span></td>
-			<td colspan="2"><input type="text" value="0" name="wow[Other]" id="wow_Other" /></td>
-			<td><input type="text" value="0" name="wow[Other_H]" id="wow_Other_H" /></td>
-			<td><input type="text" value="0" name="wow[Other_N]" id="wow_Other_N" /></td>
-		</tr>
-	</tbody>
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>WoW</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :wowPre_QA %></td>
+         <td><%= f.text_field :wowPre_QA_H %></td>
+         <td><%= f.text_field :wowPre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :wowReview %></td>
+         <td><%= f.text_field :wowReview_H %></td>
+         <td><%= f.text_field :wowReview_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :wowQA %></td>
+         <td><%= f.text_field :wowQA_H %></td>
+         <td><%= f.text_field :wowQA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :wowBug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :wowBug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :wowBug_Management_report %></td>
+         <td><%= f.text_field :wowBug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :wowAudio_QA %></td>
+         <td><%= f.text_field :wowAudio_QA_H %></td>
+         <td><%= f.text_field :wowAudio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :wowN_Review %></td>
+         <td><%= f.text_field :wowN_Review_H %></td>
+         <td><%= f.text_field :wowN_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :wowN_QA %></td>
+         <td><%= f.text_field :wowN_QA_H %></td>
+         <td><%= f.text_field :wowN_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :wowN_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :wowN_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :wowN_Bug_Management_report %></td>
+         <td><%= f.text_field :wowN_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :wowProject_Management %></td>
+         <td><%= f.text_field :wowProject_Management_H %></td>
+         <td><%= f.text_field :wowProject_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :wowOther %></td>
+         <td><%= f.text_field :wowOther_H %></td>
+         <td><%= f.text_field :wowOther_N %></td>
+      </tr>
+   </tbody>
 </table>
 
 <table class="table table-hover table-striped">
 
-	<thead>
-		<tr>
-			<th colspan="3" rowspan="1">Loc</th>
-			<th colspan="2">Amount</th>
-			<th>Hours</th>
-			<th>Notes</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="11"><span>SC2</span></td>
-			<td rowspan="6"><span>In-game</span></td>
-			<td><span>Pre-testing</span></td>
-			<td colspan="2"> <%= f.text_field :Pre_QA %></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr class="success">
-			<td><span>Review</span></td>
-			<td colspan="2"><%= f.text_field :Review %></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr class="error">
-			<td><span>Testing</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr class="warning">
-			<td rowspan="2"><span>Bug Management</span></td>
-			<td>Report</td>
-			<td>Rtest</td>
-			<td rowspan="2"><input type="text" /></td>
-			<td rowspan="2"><input type="text" /></td>
-		</tr>
-		<tr class="warning">
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr class="info">
-			<td><span>Audio Testing</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr>
-			<td rowspan="3"><span>Non-game</span></td>
-			<td><span>Review</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr>
-			<td><span>Testing</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr>
-			<td><span>Bug Management</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><span>Project Management</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-		<tr>
-			<td colspan="2"><span>Other</span></td>
-			<td colspan="2"><input type="text" /></td>
-			<td><input type="text" /></td>
-			<td><input type="text" /></td>
-		</tr>
-	</tbody>
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>SC2</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :sc2Pre_QA %></td>
+         <td><%= f.text_field :sc2Pre_QA_H %></td>
+         <td><%= f.text_field :sc2Pre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :sc2Review %></td>
+         <td><%= f.text_field :sc2Review_H %></td>
+         <td><%= f.text_field :sc2Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :sc2QA %></td>
+         <td><%= f.text_field :sc2QA_H %></td>
+         <td><%= f.text_field :sc2QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :sc2Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :sc2Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :sc2Bug_Management_report %></td>
+         <td><%= f.text_field :sc2Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :sc2Audio_QA %></td>
+         <td><%= f.text_field :sc2Audio_QA_H %></td>
+         <td><%= f.text_field :sc2Audio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :sc2N_Review %></td>
+         <td><%= f.text_field :sc2N_Review_H %></td>
+         <td><%= f.text_field :sc2N_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :sc2N_QA %></td>
+         <td><%= f.text_field :sc2N_QA_H %></td>
+         <td><%= f.text_field :sc2N_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :sc2N_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :sc2N_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :sc2N_Bug_Management_report %></td>
+         <td><%= f.text_field :sc2N_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :sc2Project_Management %></td>
+         <td><%= f.text_field :sc2Project_Management_H %></td>
+         <td><%= f.text_field :sc2Project_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :sc2Other %></td>
+         <td><%= f.text_field :sc2Other_H %></td>
+         <td><%= f.text_field :sc2Other_N %></td>
+      </tr>
+   </tbody>
 </table>
+
+<table class="table table-hover table-striped">
+
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>HearthStone</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :HSPre_QA %></td>
+         <td><%= f.text_field :HSPre_QA_H %></td>
+         <td><%= f.text_field :HSPre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :HSReview %></td>
+         <td><%= f.text_field :HSReview_H %></td>
+         <td><%= f.text_field :HSReview_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :HSQA %></td>
+         <td><%= f.text_field :HSQA_H %></td>
+         <td><%= f.text_field :HSQA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :HSBug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :HSBug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :HSBug_Management_report %></td>
+         <td><%= f.text_field :HSBug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :HSAudio_QA %></td>
+         <td><%= f.text_field :HSAudio_QA_H %></td>
+         <td><%= f.text_field :HSAudio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :HSN_Review %></td>
+         <td><%= f.text_field :HSN_Review_H %></td>
+         <td><%= f.text_field :HSN_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :HSN_QA %></td>
+         <td><%= f.text_field :HSN_QA_H %></td>
+         <td><%= f.text_field :HSN_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :HSN_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :HSN_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :HSN_Bug_Management_report %></td>
+         <td><%= f.text_field :HSN_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :HSProject_Management %></td>
+         <td><%= f.text_field :HSProject_Management_H %></td>
+         <td><%= f.text_field :HSProject_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :HSOther %></td>
+         <td><%= f.text_field :HSOther_H %></td>
+         <td><%= f.text_field :HSOther_N %></td>
+      </tr>
+   </tbody>
+</table>
+
+<table class="table table-hover table-striped">
+
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>Heroes</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :HeroPre_QA %></td>
+         <td><%= f.text_field :HeroPre_QA_H %></td>
+         <td><%= f.text_field :HeroPre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :HeroReview %></td>
+         <td><%= f.text_field :HeroReview_H %></td>
+         <td><%= f.text_field :HeroReview_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :HeroQA %></td>
+         <td><%= f.text_field :HeroQA_H %></td>
+         <td><%= f.text_field :HeroQA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :HeroBug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :HeroBug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :HeroBug_Management_report %></td>
+         <td><%= f.text_field :HeroBug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :HeroAudio_QA %></td>
+         <td><%= f.text_field :HeroAudio_QA_H %></td>
+         <td><%= f.text_field :HeroAudio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :HeroN_Review %></td>
+         <td><%= f.text_field :HeroN_Review_H %></td>
+         <td><%= f.text_field :HeroN_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :HeroN_QA %></td>
+         <td><%= f.text_field :HeroN_QA_H %></td>
+         <td><%= f.text_field :HeroN_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :HeroN_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :HeroN_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :HeroN_Bug_Management_report %></td>
+         <td><%= f.text_field :HeroN_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :HeroProject_Management %></td>
+         <td><%= f.text_field :HeroProject_Management_H %></td>
+         <td><%= f.text_field :HeroProject_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :HeroOther %></td>
+         <td><%= f.text_field :HeroOther_H %></td>
+         <td><%= f.text_field :HeroOther_N %></td>
+      </tr>
+   </tbody>
+</table>
+
+
+<table class="table table-hover table-striped">
+
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>D3</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :D3Pre_QA %></td>
+         <td><%= f.text_field :D3Pre_QA_H %></td>
+         <td><%= f.text_field :D3Pre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :D3Review %></td>
+         <td><%= f.text_field :D3Review_H %></td>
+         <td><%= f.text_field :D3Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :D3QA %></td>
+         <td><%= f.text_field :D3QA_H %></td>
+         <td><%= f.text_field :D3QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :D3Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :D3Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :D3Bug_Management_report %></td>
+         <td><%= f.text_field :D3Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :D3Audio_QA %></td>
+         <td><%= f.text_field :D3Audio_QA_H %></td>
+         <td><%= f.text_field :D3Audio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :D3N_Review %></td>
+         <td><%= f.text_field :D3N_Review_H %></td>
+         <td><%= f.text_field :D3N_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :D3N_QA %></td>
+         <td><%= f.text_field :D3N_QA_H %></td>
+         <td><%= f.text_field :D3N_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :D3N_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :D3N_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :D3N_Bug_Management_report %></td>
+         <td><%= f.text_field :D3N_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :D3Project_Management %></td>
+         <td><%= f.text_field :D3Project_Management_H %></td>
+         <td><%= f.text_field :D3Project_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :D3Other %></td>
+         <td><%= f.text_field :D3Other_H %></td>
+         <td><%= f.text_field :D3Other_N %></td>
+      </tr>
+   </tbody>
+</table>
+
+<table class="table table-hover table-striped">
+
+   <thead>
+      <tr class="warning">
+         <th colspan="3" rowspan="1">QA</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr class="warning">
+         <td rowspan="12"><span>OverWatch</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :OWPre_QA %></td>
+         <td><%= f.text_field :OWPre_QA_H %></td>
+         <td><%= f.text_field :OWPre_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :OWReview %></td>
+         <td><%= f.text_field :OWReview_H %></td>
+         <td><%= f.text_field :OWReview_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :OWQA %></td>
+         <td><%= f.text_field :OWQA_H %></td>
+         <td><%= f.text_field :OWQA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :OWBug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :OWBug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+        <td> <%= f.text_field :OWBug_Management_report %></td>
+         <td><%= f.text_field :OWBug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><%= f.text_field :OWAudio_QA %></td>
+         <td><%= f.text_field :OWAudio_QA_H %></td>
+         <td><%= f.text_field :OWAudio_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><%= f.text_field :OWN_Review %></td>
+         <td><%= f.text_field :OWN_Review_H %></td>
+         <td><%= f.text_field :OWN_Review_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><span>Testing</span></td>
+         <td colspan="2"><%= f.text_field :OWN_QA %></td>
+         <td><%= f.text_field :OWN_QA_H %></td>
+         <td><%= f.text_field :OWN_QA_N %></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><%= f.text_field :OWN_Bug_Management_H %></td>
+         <td rowspan="2"><%= f.text_field :OWN_Bug_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td><%= f.text_field :OWN_Bug_Management_report %></td>
+         <td><%= f.text_field :OWN_Bug_Management_retest %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><%= f.text_field :OWProject_Management %></td>
+         <td><%= f.text_field :OWProject_Management_H %></td>
+         <td><%= f.text_field :OWProject_Management_N %></td>
+      </tr>
+      <tr class="warning">
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><%= f.text_field :OWOther %></td>
+         <td><%= f.text_field :OWOther_H %></td>
+         <td><%= f.text_field :OWOther_N %></td>
+      </tr>
+   </tbody>
+</table>
+
+
   <strong>Date:</strong>
     <input type="text" name="eod[Date]" id="eod_Date" value=<%= @eod.Date %>> 
 <%= f.submit %></fieldset>

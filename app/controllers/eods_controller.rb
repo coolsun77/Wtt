@@ -1,12 +1,17 @@
 class EodsController < ApplicationController
 
+
+  def index
+  
+  end
+
+
   def new
   #  render plain: params.inspect
       @edate = params[:eod][:Date]
 
       if Eod.find_by(Date: @edate) 
          @eod= Eod.find_by(Date: @edate) 
-         @wow = Wow.find_by(eod_id: @eod.id)
          render 'edit'
       else
       @user = User.find(params[:id])
@@ -23,16 +28,9 @@ class EodsController < ApplicationController
    # render plain: params.inspect
     @user = User.find(params[:user_id])
     @eod = @user.eods.create(eod_params)
-    @wow = @eod.wows.create!(wow_params)
-  
-
-      if @wow.save
-        render plain:  wow_params.inspect
-      else
-        render plain:  "fuck".inspect
-      end
-
- # redirect_to user_path(@user)
+     render plain: @eod.errors[:base].inspect
+   # redirect_to user_path(@user, @eod)
+  #  redirect_to   user_eods_path(@user, @eod)
   end
  
   def show
@@ -58,7 +56,7 @@ end
 
   private
     def eod_params
-      params.require(:eod).permit(:Pre_QA,  :Date, :Review)
+      params.require(:eod).permit!
     end
 
     def wow_params

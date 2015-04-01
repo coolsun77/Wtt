@@ -5,7 +5,8 @@ class Eod < ActiveRecord::Base
 
 
   validate :sumoftime
-
+  validates_uniqueness_of :Date
+  
   def sumoftime
     sumot =  self.wowPre_QA_H + self.wowReview_H +  self.wowQA_H +  self.wowBug_Management_H + self.wowAudio_QA_H + self.wowN_Review_H +  self.wowN_QA_H +  self.wowN_Bug_Management_H +  self.wowProject_Management_H +  self.wowOther_H +   
   self.sc2Pre_QA_H + self.sc2Review_H +  self.sc2QA_H +  self.sc2Bug_Management_H + self.sc2Audio_QA_H + self.sc2N_Review_H +  self.sc2N_QA_H +  self.sc2N_Bug_Management_H +  self.sc2Project_Management_H +  self.sc2Other_H +  

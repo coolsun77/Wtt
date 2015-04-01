@@ -1,0 +1,21 @@
+here is sv:
+
+<%=  render plain: @month.inspect %>
+
+
+
+<table class="table table-hover table-striped">
+	<tr><th>周一</th><th>周二</th><th>周三</th><th>周四</th><th>周五</th><th>周六</th><th>周日</th></tr>
+<% @month.each_slice(7) do |week| %>
+<tr class="success">
+    <%      week.map do |day| %>
+    	<td > 
+    		<%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
+	        <input type="hidden" name="eod[Date]" id="eod_Date" value ="<%= day %>"/>
+	        <input type="submit" name="commit" value= "<%= day %>" />
+	        <% end %>
+
+    		<% end %>
+      </td>
+</tr>
+     <%    end %>

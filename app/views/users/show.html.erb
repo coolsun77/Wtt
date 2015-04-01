@@ -35,7 +35,9 @@
      <%= link_to 'New user', new_user_path %>
 <% end %>
 
-
+<% if @user.role == "SV" %>
+     <%= render 'sv' %>
+<% end %>
 
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 

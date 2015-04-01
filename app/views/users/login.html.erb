@@ -20,20 +20,19 @@
   <div class="row">
 
 
+<%= form_for :user, url: login_path(@user) do |f| %>
 
-<table>
-  <tr>
-    <th>user</th>
-    <th>role</th>
-    <th colspan="2"></th>
-  </tr>
+ user
+<%= f.text_field :uname %></td>
+<input type="submit" name="commit" value="login" />
+<% end %>
+
+
      
  
     <tr>
-      <td><%= @user.uname %></td>
-      <td><%= @user.role %></td>
-      <td><%= link_to 'Show', user_path(@user) %></td>
-      <td><%= link_to 'Edit', edit_user_path(@user) %></td>
+      <td><%= link_to 'Show', users_path %></td>
+
     </tr>
 </table>
 

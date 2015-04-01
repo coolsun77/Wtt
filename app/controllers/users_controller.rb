@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
   
 def index
+    
     if session[:user_name] 
-      @user = User.find_by(uname: session[:user_name] ) 
-      redirect_to @user
+      if @user = User.find_by(uname: session[:user_name] ) 
+        redirect_to @user
+      else render plain: "请联系ps管理员".inspect
+      end
     else 
+    self.win_sso  
     @users = User.all
   end
 end
@@ -73,10 +77,36 @@ def login
 #  render plain: @user.inspect
 end
 
+def win_sso
+       if head = request.env["HTTP_COOKIE"].to_s
+          if head =~/(user_name=)(\w+);/
+            user =$2
+            session[:user_name] = $2
+          #  render plain: user.inspect
+          else render 'login'
+          end
+        else render 'login'
+        end
+end
+
+
+def check_auth
+  if session[:user_name] 
+       if @user = User.find_by(uname: session[:user_name] ) 
+          redirect_to @user
+        else render plain: "请联系ps管理员".inspect
+        end
+ else 
+        redirect_to "/users"
+  end
+end
+
+
 
 private
 	  def user_params
 		params.require(:user).permit(:uname, :role)
 	  end
 
+    
 end

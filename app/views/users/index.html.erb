@@ -23,8 +23,6 @@
       
 
 
-<%= puts ENV['USERNAME'] %>
-
 <table>
   <tr>
     <th>user</th>
@@ -32,11 +30,7 @@
     <th colspan="2"></th>
   </tr>
      
-   
-<%= form_for :user, url: login_path(@user) do |f| %>   
-<%= f.text_field :uname %></td>
-<input type="submit" name="commit" value="login" />
-<% end %>
+
 
 
   <% @users.each do |user| %>

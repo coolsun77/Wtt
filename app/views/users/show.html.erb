@@ -3,8 +3,10 @@
    <head>
   
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-      <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<%= stylesheet_link_tag "bootstrap-combined.min.css" %>
+<%= stylesheet_link_tag "layoutit.css" %>
+      <link href="http://www.w3cschool.cc/try/bootstrap/layoutit/css/bootstrap-combined.min.css" rel="stylesheet">
+      <link href="http://www.w3cschool.cc/try/bootstrap/layoutit/css/layoutit.css" rel="stylesheet">
 
  
       <!--[if lt IE 9]>
@@ -35,13 +37,22 @@
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 <input type="Date" name="eod[Date]" id="eod_Date" />
 <input type="submit" name="commit" value="Try Eod" />
+
 <% end %>
 
-
-
-
-<%= month_calendar do |date| %>
-  <%= date %>
-<% end %>
+<table class="table table-hover table-striped">
+<% @daysD.each do |day| %>
+    <tr class="success">
+      <td >
+        <%= day %></td>
+    </tr>
+  <% end %>
+<% @daysU.each do |day| %>
+    <tr class="error">
+      <td >
+        <%= day %></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Back', users_path %>

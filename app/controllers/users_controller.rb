@@ -15,8 +15,20 @@ end
 
 def show
 #  render plain: params[:user].inspect
-  @user = User.find(params[:id])
+  @user = User.find(params[:id])  
+  @month = Date.today.all_month
+  @daysD = []
+  @daysU = []
 
+  @month.each do |day|
+    @eod = Eod.find_by(Date: day) 
+    if @eod
+      @daysD << day
+    else
+        @daysU << day
+    end
+  end
+#render plain: @daysD.inspect
 end
 
 def create

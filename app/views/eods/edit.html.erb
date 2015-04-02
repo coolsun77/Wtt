@@ -23,7 +23,7 @@
 
 <fieldset>
 
-<%= form_for @eod, url: user_eod_path(@eod.user, @eod), method: :patch do |f| %>
+<%= form_for @wow, url: user_eod_path(@eod.user, @eod), method: :patch do |f| %>
 <table class="table table-hover table-striped">
 
    <thead>
@@ -36,7 +36,95 @@
    </thead>
    <tbody>
       <tr>
-         <td rowspan="11"><span>Game Project</span></td>
+         <td rowspan="12"><span>WoW</span></td>
+         <td rowspan="6"><span>In-game</span></td>
+         <td><span>Pre-testing</span></td>
+         <td colspan="2"><%= f.text_field :Pre_QA %></td>
+         <td><input type="text" value="0" name="wow[Pre_QA_H]" id="wow_Pre_QA_H" /></td>
+         <td><input type="text" value="0" name="wow[Pre_QA_N]" id="wow_Pre_QA_N" /></td>
+      </tr>
+      <tr class="success">
+         <td><span>Review</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[Review]" id="wow_Review" /></td>
+         <td><input type="text" value="0" name="wow[Review_H]" id="wow_Review_H" /></td>
+         <td><input type="text" value="0" name="wow[Review_N]" id="wow_Review_N" /></td>
+      </tr>
+      <tr class="error">
+         <td><span>Testing</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[QA]" id="wow_QA" /></td>
+         <td><input type="text" value="0" name="wow[QA_H]" id="wow_QA_H" /></td>
+         <td><input type="text" value="0" name="wow[QA_N]" id="wow_QA_N" /></td>
+      </tr>
+      <tr class="warning">
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><input type="text" value="0" name="wow[Bug_Management_H" id="wow_Bug_Management_H" /></td>
+         <td rowspan="2"><input type="text" value="0" name="wow[Bug_Management_N]" id="wow_Management_N" /></td>
+      </tr>
+      <tr class="warning">
+         <td><input type="text" value="0" name="wow[Bug_Management_report]" id="wow_Bug_Management_report" /></td>
+         <td><input type="text" value="0" name="wow[Bug_Management_retest]" id="wow_Bug_Management_retest" /></td>
+      </tr>
+      <tr class="info">
+         <td><span>Audio Testing</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[Audio_QA]" id="wow_Audio_QA" /></td>
+         <td><input type="text" value="0" name="wow[Audio_QA_H]" id="wow_Audio_QA_H" /></td>
+         <td><input type="text" value="0" name="wow[Audio_QA_N]" id="wow_Audio_QA_N" /></td>
+      </tr>
+      <tr>
+         <td rowspan="4"><span>Non-game</span></td>
+         <td><span>Review</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[N_Review]" id="wow_N_Review" /></td>
+         <td><input type="text" value="0" name="wow[N_Review_H]" id="wow_N_Review_H" /></td>
+         <td><input type="text" value="0" name="wow[N_Review_N]" id="wow_N_Review_N" /></td>
+      </tr>
+      <tr>
+         <td><span>Testing</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[N_QA]" id="wow_N_QA" /></td>
+         <td><input type="text" value="0" name="wow[N_QA_H]" id="wow_N_QA_H" /></td>
+         <td><input type="text" value="0" name="wow[N_QA_N]" id="wow_N_QA_N" /></td>
+      </tr>
+      <tr>
+         <td rowspan="2"><span>Bug Management</span></td>
+         <td>Report</td>
+         <td>Rtest</td>
+         <td rowspan="2"><input type="text" value="0" name="wow[N_Bug_Management_H]" id="wow_N_Bug_Management_H" /></td>
+         <td rowspan="2"><input type="text" value="0" name="wow[N_Bug_Management_N]" id="wow_N_Bug_Management_N" /></td>
+      </tr>
+      <tr class="warning">
+         <td><input type="text" value="0" name="wow[N_Bug_Management_report]" id="wow_N_Bug_Management_report" /></td>
+         <td><input type="text" value="0" name="wow[N_Bug_Management_retest]" id="wow_N_Bug_Management_retest" /></td>
+      </tr>
+      <tr>
+         <td colspan="2"><span>Project Management</span></td>
+         
+         <td colspan="2"><input type="text" value="0" name="wow[Project_Management]" id="wow_Project_Management" /></td>
+         <td><input type="text" value="0" name="wow[Project_Management_H]" id="wow_Project_Management_H" /></td>
+         <td><input type="text" value="0" name="wow[Project_Management_N]" id="wow_Project_Management_N" /></td>
+      </tr>
+      <tr>
+         <td colspan="2"><span>Other</span></td>
+         <td colspan="2"><input type="text" value="0" name="wow[Other]" id="wow_Other" /></td>
+         <td><input type="text" value="0" name="wow[Other_H]" id="wow_Other_H" /></td>
+         <td><input type="text" value="0" name="wow[Other_N]" id="wow_Other_N" /></td>
+      </tr>
+   </tbody>
+</table>
+
+<table class="table table-hover table-striped">
+
+   <thead>
+      <tr>
+         <th colspan="3" rowspan="1">Loc</th>
+         <th colspan="2">Amount</th>
+         <th>Hours</th>
+         <th>Notes</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td rowspan="11"><span>SC2</span></td>
          <td rowspan="6"><span>In-game</span></td>
          <td><span>Pre-testing</span></td>
          <td colspan="2"> <%= f.text_field :Pre_QA %></td>

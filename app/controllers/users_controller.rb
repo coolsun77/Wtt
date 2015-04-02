@@ -21,7 +21,7 @@ def show
   @daysU = []
 
   @month.each do |day|
-    @eod = Gobject.find_by(Date: day) 
+    @eod = Eod.find_by(Date: day) 
     if @eod
       @daysD << day
     else

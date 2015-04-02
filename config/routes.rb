@@ -6,8 +6,11 @@ post 'users/login/' => 'users#login' , as: :login
 resources :users do
   resources :eods do
     resources :gobjects
+    resources :wows
   end
 end
+
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

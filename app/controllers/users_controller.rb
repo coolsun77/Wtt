@@ -21,7 +21,7 @@ def show
   @daysU = []
 
   @month.each do |day|
-    @eod = Eod.find_by(Date: day) 
+    @eod = Eod.find_by(Date: day, user_id: @user.id) 
     if @eod
       @daysD << day
     else

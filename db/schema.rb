@@ -11,12 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402074410) do
+ActiveRecord::Schema.define(version: 20150402074409) do
 
   create_table "eods", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.decimal  "Pre_QA",                      default: 0.0
+    t.decimal  "Review",                      default: 0.0
+    t.decimal  "QA",                          default: 0.0
+    t.decimal  "Bug_Management_report",       default: 0.0
+    t.decimal  "Bug_Management_retest",       default: 0.0
+    t.decimal  "Audio_QA",                    default: 0.0
+    t.decimal  "N_Review",                    default: 0.0
+    t.decimal  "N_QA",                        default: 0.0
+    t.decimal  "N_Bug_Management_report",     default: 0.0
+    t.decimal  "N_Bug_Management_retest",     default: 0.0
+    t.decimal  "Project_Management",          default: 0.0
+    t.decimal  "Other",                       default: 0.0
+    t.decimal  "Pre_QA_H",                    default: 0.0
+    t.decimal  "Review_H",                    default: 0.0
+    t.decimal  "QA_H",                        default: 0.0
+    t.decimal  "Bug_Management_report_H",     default: 0.0
+    t.decimal  "Bug_Management_retest_H",     default: 0.0
+    t.decimal  "Audio_QA_H",                  default: 0.0
+    t.decimal  "N_Review_H",                  default: 0.0
+    t.decimal  "N_QA_H",                      default: 0.0
+    t.decimal  "N_Bug_Management_report_H",   default: 0.0
+    t.decimal  "N_Bug_Management_retest_H",   default: 0.0
+    t.decimal  "Project_Management_H",        default: 0.0
+    t.decimal  "Other_H",                     default: 0.0
+    t.string   "Pre_QA_N",                    default: "Noting"
+    t.string   "Review_N",                    default: "Noting"
+    t.string   "QA_N",                        default: "Noting"
+    t.string   "Bug_Management_report_N",     default: "Noting"
+    t.string   "Bug_Management_retest_N",     default: "Noting"
+    t.string   "Audio_QA_N",                  default: "Noting"
+    t.string   "N_Review_N",                  default: "Noting"
+    t.string   "N_QA_N",                      default: "Noting"
+    t.string   "N_Bug_Management_report_N",   default: "Noting"
+    t.string   "N_Bug_Management_retest_N",   default: "Noting"
+    t.string   "Project_Management_N",        default: "Noting"
+    t.string   "Other_N",                     default: "Noting"
     t.date     "Date"
     t.decimal  "wowPre_QA",                   default: 0.0
     t.decimal  "wowReview",                   default: 0.0

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Report Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @report_entries.each do |report_entry| %>
+      <tr>
+        <td><%= report_entry.project_id %></td>
+        <td><%= link_to 'Show', report_entry %></td>
+        <td><%= link_to 'Edit', edit_report_entry_path(report_entry) %></td>
+        <td><%= link_to 'Destroy', report_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Report entry', new_report_entry_path %>

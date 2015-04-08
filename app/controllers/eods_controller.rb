@@ -2,7 +2,7 @@ class EodsController < ApplicationController
 
 
   def index
-  
+
   end
 
 
@@ -10,13 +10,13 @@ class EodsController < ApplicationController
   #  render plain: params.inspect
       @edate = params[:eod][:Date]
 
-      if Eod.find_by(Date: @edate, user_id: params[:id]) 
-         @eod= Eod.find_by(Date: @edate, user_id: params[:id]) 
+      if Eod.find_by(Date: @edate, user_id: params[:id])
+         @eod= Eod.find_by(Date: @edate, user_id: params[:id])
          render 'edit'
       else
-      @user = User.find(params[:id])
-      @eod = Eod.new(:user=>@user, :Date =>@edate )
-    end
+        @user = User.find(params[:id])
+        @eod = Eod.new(:user=>@user, :Date =>@edate )
+      end
   end
 
 
@@ -32,20 +32,20 @@ class EodsController < ApplicationController
     redirect_to user_path(@user, @eod)
   #  redirect_to   user_eods_path(@user, @eod)
   end
- 
+
   def show
       @eod = Eod.find(params[:id])
   end
 
-  def edit 
-    
+  def edit
+
   #    @eod = Eod.find(params[:id])
   #    @wow = Wow.find_by(eod_id: 26)
   end
 
   def update
     @eod = Eod.find(params[:id])
- 
+
     if @eod.update(eod_params)
       redirect_to @eod.user
     else

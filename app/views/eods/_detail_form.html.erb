@@ -1,0 +1,6 @@
+<% detail = report_entry.report_entry_details.build %>
+<%= form.fields_for detail do |detail_form| %>
+  <%= detail.text_field :quantity %>
+  <%= detail.text_field :hours %>
+  <%= detail.text_field :comments %>
+<% end %>

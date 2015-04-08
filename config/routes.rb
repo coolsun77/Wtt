@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :report_entry_details
+
+  resources :job_types
+
+  resources :report_entries
+
+  resources :projects
+
 post 'users/login/' => 'users#login' , as: :login
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

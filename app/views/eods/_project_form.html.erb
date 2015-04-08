@@ -1,0 +1,7 @@
+<% report_entry = @eod.report_entries.build %>
+<%= form.fields_for report_entry do |project_form| %>
+<h2><%= project.name %></h2>
+<% JobType.find_each do |job_type| %>
+<%= render 'detail_form', report_entry: report_entry, job_type: job_type, form: project_form %>
+<% end %>
+<% end %>

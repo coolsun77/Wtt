@@ -31,6 +31,11 @@
   <%= @user.role %>
 </p>
 
+<% if @user.role == "QA" %>
+     <%= link_to 'New user', new_user_path %>
+<% end %>
+
+
 
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 
@@ -43,14 +48,22 @@
 <table class="table table-hover table-striped">
 <% @daysD.each do |day| %>
     <tr class="success">
-      <td >
-        <%= day %></td>
+      <td > 
+        <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
+        <input type="hidden" name="eod[Date]" id="eod_Date" value ="<%= day %>"/>
+        <input type="submit" name="commit" value= "<%= day %>" />
+        <% end %>
+      </td>
     </tr>
   <% end %>
 <% @daysU.each do |day| %>
     <tr class="error">
-      <td >
-        <%= day %></td>
+     <td >       
+        <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
+        <input type="hidden" name="eod[Date]" id="eod_Date" value ="<%= day %>"/>
+        <input type="submit" name="commit" value= "<%= day %>" />
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

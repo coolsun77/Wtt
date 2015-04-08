@@ -27,10 +27,14 @@ class EodsController < ApplicationController
   def create
   # render plain: params.inspect
     @user = User.find(params[:user_id])
-    @eod = @user.eods.create(eod_params)
-   #  render plain: @eod.errors[:base].inspect
-    redirect_to user_path(@user, @eod)
-  #  redirect_to   user_eods_path(@user, @eod)
+   @eod = @user.eods.create(eod_params)
+  #   render plain: @eod.errors[:base].inspect
+   if  @eod.errors.any?
+    render 'new'
+    else
+      redirect_to user_path(@user, @eod)
+    end
+    
   end
  
   def show

@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
    <head>
-  
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<%= stylesheet_link_tag "bootstrap-combined.min.css" %>
-<%= stylesheet_link_tag "layoutit.css" %>
-      <link href="http://www.w3cschool.cc/try/bootstrap/layoutit/css/bootstrap-combined.min.css" rel="stylesheet">
-      <link href="http://www.w3cschool.cc/try/bootstrap/layoutit/css/layoutit.css" rel="stylesheet">
 
- 
-      <!--[if lt IE 9]>
-         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
    </head>
    <body>
-      <script src="https://code.jquery.com/jquery.js"></script>
-      
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Bootstrap 实例 - 上下文类</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
 <div class="container">
   <div class="row">
 
@@ -32,13 +31,18 @@
 </p>
 
 <% if @user.role == "QA" %>
-     <%= link_to 'New user', new_user_path %>
+        <%= render 'qa' %>
 <% end %>
 
 <% if @user.role == "SV" %>
      <%= render 'sv' %>
+     <%= link_to 'New user', new_user_path %>
+     
 <% end %>
-
+  
+<% if @user.role == "Loc" %>
+     <%= render 'loc' %> 
+<% end %>
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 
 
@@ -47,27 +51,6 @@
 
 <% end %>
 
-<table class="table table-hover table-striped">
-<% @daysD.each do |day| %>
-    <tr class="success">
-      <td > 
-        <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
-        <input type="hidden" name="eod[Date]" id="eod_Date" value ="<%= day %>"/>
-        <input type="submit" name="commit" value= "<%= day %>" />
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-<% @daysU.each do |day| %>
-    <tr class="error">
-     <td >       
-        <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
-        <input type="hidden" name="eod[Date]" id="eod_Date" value ="<%= day %>"/>
-        <input type="submit" name="commit" value= "<%= day %>" />
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+
 
 <%= link_to 'Back', users_path %>

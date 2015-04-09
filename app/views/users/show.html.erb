@@ -30,27 +30,24 @@
   <%= @user.role %>
 </p>
 
-<% if @user.role == "QA" %>
-        <%= render 'qa' %>
-<% end %>
+
 
 <% if @user.role == "SV" %>
      <%= render 'sv' %>
      <%= link_to 'New user', new_user_path %>
      
-<% end %>
-  
-<% if @user.role == "Loc" %>
-     <%= render 'loc' %> 
-<% end %>
+
+  <% else %>
+
 <%= form_for :eod, url: new_user_eod_path(@user) do |f| %>   
 
 
-<input type="Date" name="eod[Date]" id="eod_Date" />
+<input type="Date" name="eod[Date]" id="eod_Date" value="<%= Date.today %>"/>
 <input type="submit" name="commit" value="Try Eod" />
-
+<%= render 'calender' %>
 <% end %>
-
+<% end %>
+ 
 
 
 <%= link_to 'Back', users_path %>

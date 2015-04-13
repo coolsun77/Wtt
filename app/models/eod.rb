@@ -5,7 +5,6 @@ class Eod < ActiveRecord::Base
 
 
   validate :sumoftime
-  validates_uniqueness_of :Date
   
   def sumoftime
     sumot =  self.wowPre_QA_H + self.wowReview_H +  self.wowQA_H +  self.wowBug_Management_H + self.wowAudio_QA_H + self.wowN_Review_H +  self.wowN_QA_H +  self.wowN_Bug_Management_H +  self.wowProject_Management_H +  self.wowOther_H +   
@@ -23,9 +22,15 @@ class Eod < ActiveRecord::Base
 
 
 
-  errors.add(:base, "每日时间之和必须大于等于8小于等于24") unless (  sumot >=8  && sumot <=24  )
+    errors.add(:base, "每日时间之和必须大于等于8小于等于24") unless (  sumot >=8  && sumot <=24  )
 
-end
+  end 
+
+
+
+
+
+
 
 end
 

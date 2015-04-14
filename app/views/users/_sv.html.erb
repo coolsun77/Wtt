@@ -1,6 +1,38 @@
-here is sv:
+ <%
+ 	wowtime = Eod.sum("wowPre_QA_H") + Eod.sum("wowReview_H") +  Eod.sum("wowQA_H") +  Eod.sum("wowBug_Management_H") + Eod.sum("wowAudio_QA_H") + Eod.sum("wowN_Review_H") +  Eod.sum("wowN_QA_H") +  Eod.sum("wowN_Bug_Management_H") +  Eod.sum("wowProject_Management_H") +  Eod.sum("wowOther_H") + Eod.sum("wowfamiliarization_H") + Eod.sum("wowtranslation_H") + Eod.sum("wowbugfix_H") + Eod.sum("wowaudiodelivery_H") + Eod.sum("wowN_translation_H") + Eod.sum("wowN_bugfix_H") + Eod.sum("wowaudioonsite_H") + Eod.sum("wowpolish_H")
 
-<%=  render plain:"我要请大伙吃鸡排".inspect %>
+ 	sc2time = Eod.sum("sc2Pre_QA_H") + Eod.sum("sc2Review_H") +  Eod.sum("sc2QA_H") +  Eod.sum("sc2Bug_Management_H") + Eod.sum("sc2Audio_QA_H") + Eod.sum("sc2N_Review_H") +  Eod.sum("sc2N_QA_H") +  Eod.sum("sc2N_Bug_Management_H") +  Eod.sum("sc2Project_Management_H") +  Eod.sum("sc2Other_H") + Eod.sum("sc2familiarization_H") + Eod.sum("sc2translation_H") + Eod.sum("sc2bugfix_H") + Eod.sum("sc2audiodelivery_H") + Eod.sum("sc2N_translation_H") + Eod.sum("sc2N_bugfix_H") + Eod.sum("sc2audioonsite_H") + Eod.sum("sc2polish_H")
+
+	hstime = Eod.sum("HSPre_QA_H") + Eod.sum("HSReview_H") +  Eod.sum("HSQA_H") +  Eod.sum("HSBug_Management_H") + Eod.sum("HSAudio_QA_H") + Eod.sum("HSN_Review_H") +  Eod.sum("HSN_QA_H") +  Eod.sum("HSN_Bug_Management_H") +  Eod.sum("HSProject_Management_H") +  Eod.sum("HSOther_H") + Eod.sum("HSfamiliarization_H") + Eod.sum("HStranslation_H") + Eod.sum("HSbugfix_H") + Eod.sum("HSaudiodelivery_H") + Eod.sum("HSN_translation_H") + Eod.sum("HSN_bugfix_H") + Eod.sum("HSaudioonsite_H")  + Eod.sum("HSpolish_H")
+
+	herotime = Eod.sum("HeroPre_QA_H") + Eod.sum("HeroReview_H") +  Eod.sum("HeroQA_H") +  Eod.sum("HeroBug_Management_H") + Eod.sum("HeroAudio_QA_H") + Eod.sum("HeroN_Review_H") +  Eod.sum("HeroN_QA_H") +  Eod.sum("HeroN_Bug_Management_H") +  Eod.sum("HeroProject_Management_H") +  Eod.sum("HeroOther_H") + Eod.sum("Herofamiliarization_H") + Eod.sum("Herotranslation_H") + Eod.sum("Herobugfix_H") + Eod.sum("Heroaudiodelivery_H") + Eod.sum("HeroN_translation_H") + Eod.sum("HeroN_bugfix_H") + Eod.sum("Heroaudioonsite_H") + Eod.sum("Heropolish_H")
+
+	d3time = Eod.sum("D3Pre_QA_H") + Eod.sum("D3Review_H") +  Eod.sum("D3QA_H") +  Eod.sum("D3Bug_Management_H") + Eod.sum("D3Audio_QA_H") + Eod.sum("D3N_Review_H") +  Eod.sum("D3N_QA_H") +  Eod.sum("D3N_Bug_Management_H") +  Eod.sum("D3Project_Management_H") +  Eod.sum("D3Other_H") + Eod.sum("D3familiarization_H") + Eod.sum("D3translation_H") + Eod.sum("D3bugfix_H") + Eod.sum("D3audiodelivery_H") + Eod.sum("D3N_translation_H") + Eod.sum("D3N_bugfix_H") + Eod.sum("D3audioonsite_H") + Eod.sum("D3polish_H")
+
+	owtime = Eod.sum("OWPre_QA_H") + Eod.sum("OWReview_H") +  Eod.sum("OWQA_H") +  Eod.sum("OWBug_Management_H") + Eod.sum("OWAudio_QA_H") + Eod.sum("OWN_Review_H") +  Eod.sum("OWN_QA_H") +  Eod.sum("OWN_Bug_Management_H") +  Eod.sum("OWProject_Management_H") +  Eod.sum("OWOther_H") + Eod.sum("OWfamiliarization_H") + Eod.sum("OWtranslation_H") + Eod.sum("OWbugfix_H") + Eod.sum("OWaudiodelivery_H") + Eod.sum("OWN_translation_H") + Eod.sum("OWN_bugfix_H") + Eod.sum("OWaudioonsite_H") + Eod.sum("OWpolish_H")
 
 
 
+
+   %>
+
+<table class="table" contenteditable="true">
+	<tbody>
+		<tr class="info">
+			<td>WoW</td>
+			<td>Hearthstone</td>
+			<td>SCII</td>
+			<td>Heros</td>
+			<td>DIII</td>
+			<td>Overwatch</td>
+		</tr>
+		<tr>
+			<td><%= wowtime %></td>
+			<td><%= hstime %></td>
+			<td><%= sc2time %></td>
+			<td><%= herotime %></td>
+			<td><%= d3time %></td>
+			<td><%= owtime %></td>
+		</tr>
+	</tbody>
+</table>

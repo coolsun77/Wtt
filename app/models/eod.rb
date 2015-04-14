@@ -13,12 +13,12 @@ class Eod < ActiveRecord::Base
     self.HeroPre_QA_H + self.HeroReview_H +  self.HeroQA_H +  self.HeroBug_Management_H + self.HeroAudio_QA_H + self.HeroN_Review_H +  self.HeroN_QA_H +  self.HeroN_Bug_Management_H +  self.HeroProject_Management_H +  self.HeroOther_H +  
      self.D3Pre_QA_H + self.D3Review_H +  self.D3QA_H +  self.D3Bug_Management_H + self.D3Audio_QA_H + self.D3N_Review_H +  self.D3N_QA_H +  self.D3N_Bug_Management_H +  self.D3Project_Management_H +  self.D3Other_H +  
       self.OWPre_QA_H + self.OWReview_H +  self.OWQA_H +  self.OWBug_Management_H + self.OWAudio_QA_H + self.OWN_Review_H +  self.OWN_QA_H +  self.OWN_Bug_Management_H +  self.OWProject_Management_H +  self.OWOther_H +
-      self.wowfamiliarization_H + self.wowtranslation_H + self.wowbugfix_H + self.wowaudiodelivery_H + self.wowN_translation_H + self.wowN_bugfix_H +
-      self.sc2familiarization_H + self.sc2translation_H + self.sc2bugfix_H + self.sc2audiodelivery_H + self.sc2N_translation_H + self.sc2N_bugfix_H +
-      self.Herofamiliarization_H + self.Herotranslation_H + self.Herobugfix_H + self.Heroaudiodelivery_H + self.HeroN_translation_H + self.HeroN_bugfix_H +
-      self.D3familiarization_H + self.D3translation_H + self.D3bugfix_H + self.D3audiodelivery_H + self.D3N_translation_H + self.D3N_bugfix_H +
-      self.HSfamiliarization_H + self.HStranslation_H + self.HSbugfix_H + self.HSaudiodelivery_H + self.HSN_translation_H + self.HSN_bugfix_H +
-      self.OWfamiliarization_H + self.OWtranslation_H + self.OWbugfix_H + self.OWaudiodelivery_H + self.OWN_translation_H + self.OWN_bugfix_H
+      self.wowfamiliarization_H + self.wowtranslation_H + self.wowbugfix_H + self.wowaudiodelivery_H + self.wowN_translation_H + self.wowN_bugfix_H + self.wowaudioonsite_H + self.wowpolish_H +
+      self.sc2familiarization_H + self.sc2translation_H + self.sc2bugfix_H + self.sc2audiodelivery_H + self.sc2N_translation_H + self.sc2N_bugfix_H + self.sc2audioonsite_H + self.sc2polish_H +
+      self.Herofamiliarization_H + self.Herotranslation_H + self.Herobugfix_H + self.Heroaudiodelivery_H + self.HeroN_translation_H + self.HeroN_bugfix_H + self.Heroaudioonsite_H + self.Heropolish_H +
+      self.D3familiarization_H + self.D3translation_H + self.D3bugfix_H + self.D3audiodelivery_H + self.D3N_translation_H + self.D3N_bugfix_H + self.D3audioonsite_H + self.D3polish_H +
+      self.HSfamiliarization_H + self.HStranslation_H + self.HSbugfix_H + self.HSaudiodelivery_H + self.HSN_translation_H + self.HSN_bugfix_H + self.HSaudioonsite_H + self.HSpolish_H +
+      self.OWfamiliarization_H + self.OWtranslation_H + self.OWbugfix_H + self.OWaudiodelivery_H + self.OWN_translation_H + self.OWN_bugfix_H + self.OWaudioonsite_H + self.OWpolish_H
 
 
 
